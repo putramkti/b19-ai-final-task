@@ -49,7 +49,7 @@ export type SkillCategory = {
   footer: string;
 };
 
-export type ProjectFilter = "all" | "fullstack" | "uiux";
+export type ProjectFilter = "all" | "fullstack" | "console";
 
 export type Project = {
   id: string;
@@ -59,14 +59,15 @@ export type Project = {
   image: string;
   tags: string[];
   filters: Exclude<ProjectFilter, "all">[];
+  /** Outbound links; the card renders a static label for the ones it lacks. */
+  demoHref?: string;
+  sourceHref?: string;
 };
 
 export type SocialLink = {
   label: string;
   icon: IconAsset;
   href: string;
-  /** True while the real profile URL is unknown; surfaced to assistive tech. */
-  placeholder?: boolean;
 };
 
 /* ------------------------------------------------------------------ *
@@ -112,9 +113,9 @@ export const icons = {
  * ------------------------------------------------------------------ */
 
 export const brand = {
-  monogram: "AP.",
+  monogram: "PJM.",
   wordmark: "Portfolio",
-  owner: "Alex Pratama",
+  owner: "Putra Jadi Mukti",
 } as const;
 
 export const navItems: readonly NavItem[] = [
@@ -134,25 +135,24 @@ export const headerAction = {
  * ------------------------------------------------------------------ */
 
 export const hero = {
-  badge: "Tersedia untuk proyek baru & kontrak freelance",
+  badge: "Terbuka untuk peran full-time & proyek freelance",
   headline: {
-    line1: "Membangun Solusi Web",
-    line2: "Modern dengan",
-    accent: "Pengalaman Digital",
-    accentTail: " yang",
-    line4: "Memukau.",
+    line1: "Software Engineer",
+    line2: "yang membangun sistem",
+    accent: "web end-to-end",
+    accentTail: ".",
   },
   description:
-    "Saya Alex Pratama — Full Stack Developer & UI/UX Designer berbasis di Jakarta. Berfokus pada arsitektur web berperforma tinggi, antarmuka interaktif yang memikat, dan sistem backend yang skalabel.",
+    "Saya Putra Jadi Mukti — Software Engineer berbasis di Semarang. Menangani pengembangan dari sisi antarmuka hingga lapisan data: TypeScript dan Next.js di frontend, .NET maupun Laravel di backend.",
   primaryCta: { label: "EKSPLORASI PROYEK", href: "#proyek" },
   secondaryCta: { label: "TENTANG SAYA", href: "#tentang" },
   stackLabel: "CORE STACK:",
   stack: [
-    { label: "React 19", accent: "teal" as Accent },
-    { label: "Next.js 15", accent: "indigo" as Accent },
     { label: "TypeScript", accent: "teal" as Accent },
-    { label: "Node.js", accent: "sky" as Accent },
-    { label: "Tailwind CSS", accent: "indigo" as Accent },
+    { label: "Next.js", accent: "indigo" as Accent },
+    { label: "React", accent: "teal" as Accent },
+    { label: ".NET", accent: "sky" as Accent },
+    { label: "Laravel", accent: "indigo" as Accent },
   ],
 } as const;
 
@@ -162,22 +162,22 @@ export const hero = {
 
 export const stats: readonly Stat[] = [
   {
-    id: "experience",
-    value: "3+ Tahun",
-    label: "Pengalaman Industri Nyata",
+    id: "bootcamp",
+    value: "2026",
+    label: "Bootcamp Batch 19",
     icon: icons.statCode,
   },
   {
     id: "projects",
-    value: "25+ Proyek",
-    label: "Selesai & Beroperasi di Production",
+    value: "4 Proyek",
+    label: "Proyek Pilihan",
     icon: icons.statProjects,
   },
   {
-    id: "satisfaction",
-    value: "99%",
-    label: "Tingkat Kepuasan Klien & Partner",
-    icon: icons.statSatisfaction,
+    id: "coverage",
+    value: "Full-stack",
+    label: "Cakupan Keahlian",
+    icon: icons.categoryBackend,
   },
 ];
 
@@ -189,41 +189,41 @@ export const about = {
   eyebrow: "PROFIL & DEDIKASI",
   title: "Tentang Saya",
   description:
-    "Mengenal lebih dekat perjalanan, nilai integritas, dan filosofi kerja saya.",
+    "Mengenal lebih dekat latar pendidikan, pengalaman kerja, dan cara saya membangun perangkat lunak.",
   profile: {
-    image: "/assets/images/avatar-alex.jpg",
-    imageAlt:
-      "Ilustrasi potret Alex Pratama dengan latar gelap bergradasi ungu dan teal",
-    name: "Alex Pratama, S.Kom.",
-    role: "Full Stack Software Crafter & UX Architect",
+    image:
+      "https://res.cloudinary.com/oruemcnw/image/upload/f_auto,q_auto,w_800/profile_gqzbeh",
+    imageAlt: "Foto profil Putra Jadi Mukti",
+    name: "Putra Jadi Mukti",
+    role: "Software Engineer",
   },
   specs: [
-    { label: "Lokasi", value: "Jakarta / Remote Global" },
-    { label: "Status Kerja", value: "Open to Contract / Fulltime", accent: true },
-    { label: "Pendidikan", value: "Teknik Informatika (Computer Science)" },
+    { label: "Lokasi", value: "Semarang, Indonesia" },
+    { label: "Status Kerja", value: "Open to Full-time / Freelance", accent: true },
+    { label: "Pendidikan", value: "S1 Informatika, UPN Veteran Yogyakarta" },
   ] satisfies readonly SpecRow[],
   cvCta: { label: "UNDUH CURRICULUM VITAE (PDF)", href: "#kontak" },
   prose: [
-    "Perjalanan saya dalam rekayasa perangkat lunak dimulai dari rasa ingin tahu mendalam tentang bagaimana sistem skala besar dapat dibangun tanpa mengorbankan estetika dan intuisi visual. Saya percaya bahwa kode yang bersih dan desain yang empatik bukanlah dua hal yang terpisah, melainkan satu kesatuan karya.",
-    "Sebagai profesional yang memadukan perspektif teknis dan desain, saya terbiasa memimpin siklus pengembangan dari nol: mulai dari riset kebutuhan pengguna, penyusunan wireframe di Figma, implementasi frontend modern dengan React dan Next.js, hingga konfigurasi basis data terdistribusi dan integrasi API yang aman.",
+    "Saya Putra Jadi Mukti, Software Engineer yang terbiasa menangani pekerjaan dari hulu ke hilir: merancang antarmuka, membangun API, memodelkan basis data, sampai menyiapkan rilis. Latar pendidikan S1 Informatika di UPN Veteran Yogyakarta membentuk cara saya bekerja secara sistematis dan berbasis data.",
+    "Pengalaman magang di Formulatrix dan Qdee Fresh menempatkan saya pada alur kerja tim produk yang nyata — dari membaca kebutuhan, menulis kode yang mudah ditinjau, hingga menguji perilaku sistem sebelum dirilis. Saya menikmati pekerjaan yang rapi, terukur, dan mudah dirawat oleh orang berikutnya.",
   ],
   pillars: [
     {
       id: "clean-code",
       title: "Clean Code",
-      body: "Penerapan standar SOLID, TypeScript strict mode, dan pengujian berkala untuk keandalan jangka panjang.",
+      body: "Kode yang konsisten, bertipe jelas, dan mudah ditinjau ulang oleh anggota tim berikutnya.",
       icon: icons.pillarCleanCode,
     },
     {
       id: "user-centric",
       title: "User-Centric",
-      body: "Antarmuka dibuat berlandaskan aksesibilitas WCAG, micro-interactions halus, dan performa 60fps.",
+      body: "Antarmuka disusun berdasarkan alur pemakaian nyata, bukan sekadar tampilan yang rapi.",
       icon: icons.pillarUserCentric,
     },
     {
       id: "agility",
       title: "Agility & Growth",
-      body: "Iterasi cepat dengan komunikasi transparan, adaptif terhadap kebutuhan bisnis dan arsitektur modern.",
+      body: "Terbiasa bekerja iteratif, belajar cepat, dan menyesuaikan diri dengan tuntutan proyek.",
       icon: icons.pillarGrowth,
     },
   ] satisfies readonly Pillar[],
@@ -231,15 +231,15 @@ export const about = {
     title: "Jejak Karier Singkat",
     entries: [
       {
-        period: "2022 — Sekarang",
-        title: "Lead Full Stack Engineer & Designer — TechNova Studio",
-        body: "Mengarahkan arsitektur produk SaaS, design system enterprise, dan integrasi backend cloud.",
+        period: "Jun — Jul 2026",
+        title: "Formulatrix",
+        body: "Berpartisipasi dalam pengembangan perangkat lunak pada tim produk, mengerjakan fitur dan perbaikan terarah.",
         current: true,
       },
       {
-        period: "2021 — 2022",
-        title: "Frontend Developer — Nusantara Digital Lab",
-        body: "Membangun web app responsif berkecepatan tinggi menggunakan React, Next.js, dan Tailwind CSS.",
+        period: "Okt — Des 2025",
+        title: "Qdee Fresh",
+        body: "Terlibat dalam pengerjaan aplikasi web, mulai dari implementasi antarmuka hingga integrasi data.",
       },
     ] satisfies readonly TimelineEntry[],
   },
@@ -253,65 +253,49 @@ export const skills = {
   eyebrow: "KOMPILASI INSTRUMEN",
   title: "Keahlian & Teknologi",
   description:
-    "Daftar perkakas teknis, pustaka kode, dan platform yang saya gunakan untuk mewujudkan produk digital berskala produksi.",
+    "Perkakas teknis yang saya gunakan sehari-hari untuk membangun produk digital dari sisi antarmuka hingga basis data.",
   categories: [
+    {
+      id: "design",
+      title: "Design",
+      blurb: "Perancangan antarmuka dan alur sebelum masuk ke kode.",
+      icon: icons.categoryDesign,
+      chips: [{ label: "Figma", accent: "sky" }],
+      footer: "Design Tooling",
+    },
     {
       id: "frontend",
       title: "Frontend",
-      blurb: "Antarmuka responsif, dinamis, dan teroptimasi.",
+      blurb: "Antarmuka bertipe kuat, komponen reaktif, dan rute modern.",
       icon: icons.categoryFrontend,
       chips: [
-        { label: "React 18/19", accent: "teal" },
-        { label: "Next.js", accent: "indigo" },
         { label: "TypeScript", accent: "teal" },
-        { label: "Vue.js 3", accent: "indigo" },
-        { label: "Tailwind CSS", accent: "sky" },
-        { label: "HTML5/CSS3", accent: "muted" },
+        { label: "React", accent: "indigo" },
       ],
       footer: "Core Discipline",
     },
     {
       id: "backend",
-      title: "Backend & DB",
-      blurb: "Layanan mikro, struktur data, dan API aman.",
+      title: "Backend",
+      blurb: "Layanan aplikasi, API, dan logika domain di sisi server.",
       icon: icons.categoryBackend,
       chips: [
-        { label: "Node.js", accent: "teal" },
-        { label: "Express / Nest", accent: "indigo" },
-        { label: "PostgreSQL", accent: "teal" },
-        { label: "MongoDB", accent: "sky" },
-        { label: "REST & GraphQL", accent: "muted" },
-        { label: "Prisma ORM", accent: "indigo" },
+        { label: ".NET", accent: "indigo" },
+        { label: "C#", accent: "teal" },
+        { label: "Laravel", accent: "sky" },
       ],
       footer: "Production Tested",
     },
     {
-      id: "design",
-      title: "UI/UX Design",
-      blurb: "Interaksi teruji, hierarki visual & prototipe.",
-      icon: icons.categoryDesign,
-      chips: [
-        { label: "Figma", accent: "sky" },
-        { label: "Design Tokens", accent: "indigo" },
-        { label: "Wireframing", accent: "teal" },
-        { label: "User Research", accent: "muted" },
-        { label: "Prototyping", accent: "sky" },
-      ],
-      footer: "Human Centered",
-    },
-    {
-      id: "devops",
-      title: "Tools & DevOps",
-      blurb: "Alur kerja modern, automasi, dan deployment.",
+      id: "data",
+      title: "Data & Scripting",
+      blurb: "Pengolahan data, kueri, dan otomasi pendukung.",
       icon: icons.categoryDevops,
       chips: [
-        { label: "Git & GitHub", accent: "indigo" },
-        { label: "Docker", accent: "teal" },
-        { label: "CI/CD Actions", accent: "muted" },
-        { label: "Vercel & Cloudflare", accent: "indigo" },
-        { label: "VS Code & Zed", accent: "sky" },
+        { label: "Python", accent: "teal" },
+        { label: "SQL", accent: "muted" },
       ],
-      footer: "Seamless Workflow",
+      footer: "Data Handling",
     },
   ] satisfies readonly SkillCategory[],
 } as const;
@@ -320,62 +304,68 @@ export const skills = {
  * Projects
  * ------------------------------------------------------------------ */
 
+const projectImage = (publicId: string) =>
+  `https://res.cloudinary.com/oruemcnw/image/upload/f_auto,q_auto,w_840/${publicId}`;
+
 const projectItems: readonly Project[] = [
   {
-    id: "saas-analytics",
-    title: "SaaS Analytics Dashboard",
-    category: "SaaS & Business Intelligence",
-    body: "Platform analitik real-time untuk memonitor metrik bisnis, retensi pengguna, dan pertumbuhan revenue secara akurat dengan visualisasi data interaktif.",
-    image: "/assets/images/project-saas.jpg",
-    tags: ["Next.js", "Tailwind CSS", "Chart.js", "PostgreSQL"],
+    id: "warehouse-inventory",
+    title: "Warehouse Inventory System",
+    category: "Full-stack Freelance",
+    body: "Sistem inventori gudang untuk mencatat stok masuk dan keluar, memantau ketersediaan barang, serta menyajikan laporan persediaan secara terpusat.",
+    image: projectImage("screenshot-2026-10-09-210222_ffbun4"),
+    tags: ["Laravel", "React", "TypeScript", "Inertia.js", "Tailwind"],
     filters: ["fullstack"],
   },
   {
-    id: "zenith",
-    title: "Zenith E-Commerce Platform",
-    category: "E-Commerce & FinTech",
-    body: "Aplikasi toko online modern dengan alur checkout instan tanpa hambatan, sistem filter produk multi-kriteria canggih, dan manajemen inventori terintegrasi.",
-    image: "/assets/images/project-zenith.jpg",
-    tags: ["React", "TypeScript", "Stripe API", "Tailwind"],
+    id: "poker-console",
+    title: "PokerConsoleApp",
+    category: "Bootcamp",
+    body: "Permainan Texas Hold'em berbasis terminal dengan aturan taruhan lengkap, dilindungi 95 unit test NUnit untuk menjaga konsistensi logika permainan.",
+    image: projectImage("poker-console_1"),
+    tags: ["C#", ".NET", "Spectre.Console", "NUnit"],
+    filters: ["console"],
+    sourceHref: "https://github.com/putramkti/PokerGame",
+  },
+  {
+    id: "jec-consultant",
+    title: "JEC Consultant",
+    category: "Full-stack Freelance",
+    body: "Company profile bilingual dengan CMS buatan sendiri, sehingga tim internal dapat memperbarui konten dua bahasa tanpa menyentuh kode.",
+    image: projectImage("jec-consultant_1"),
+    tags: ["Laravel", "Blade", "Tailwind", "CMS"],
     filters: ["fullstack"],
+    demoHref: "https://jecconsultant.co.id",
   },
   {
-    id: "collabtask",
-    title: "CollabTask — Project Management Tool",
-    category: "Productivity & Real-time",
-    body: "Aplikasi kolaborasi tim dengan sinkronisasi papan Kanban dua arah secara real-time via WebSocket, time tracking, dan manajemen sprint terperinci.",
-    image: "/assets/images/project-collabtask.jpg",
-    tags: ["Vue.js 3", "Node.js", "Socket.io", "MongoDB"],
-    filters: ["uiux"],
-  },
-  {
-    id: "fintrack",
-    title: "FinTrack — Personal Finance App",
-    category: "Personal Finance & Mobile Web",
-    body: "Aplikasi pelacak keuangan pribadi dan anggaran pintar dengan visualisasi laporan interaktif, pembagian pos pengeluaran otomatis, dan enkripsi data lokal.",
-    image: "/assets/images/project-fintrack.jpg",
-    tags: ["React Native / Next", "Tailwind CSS", "SQLite / Cloud"],
-    filters: ["uiux"],
+    id: "raf-invoice",
+    title: "RAF Invoice",
+    category: "Freelance",
+    body: "Generator invoice yang menampilkan pratinjau langsung dan menghasilkan PDF dari satu template yang sama, sehingga hasil cetak identik dengan tampilan layar.",
+    image: projectImage("raf-invoice_1"),
+    tags: ["Next.js", "Puppeteer", "Supabase", "shadcn/ui"],
+    filters: ["fullstack"],
   },
 ];
 
 const projectFilters: readonly { id: ProjectFilter; label: string }[] = [
   { id: "all", label: "SEMUA (4)" },
   { id: "fullstack", label: "FULL STACK" },
-  { id: "uiux", label: "UI/UX APP" },
+  { id: "console", label: "CONSOLE" },
 ];
 
 export const projects = {
   eyebrow: "BUKTI KAPABILITAS",
   title: "Proyek Pilihan",
   description:
-    "Beberapa karya terbaik yang pernah saya rancang dan bangun dengan fokus pada skalabilitas serta kenyamanan interaksi pengguna.",
+    "Empat proyek yang mewakili rentang pekerjaan saya — dari sistem inventori dan company profile, generator dokumen, sampai aplikasi terminal beruji otomatis.",
   filters: projectFilters,
   emptyState: "Belum ada proyek pada kategori ini.",
   items: projectItems,
   actions: {
-    demo: "DEMO LANGSUNG",
+    demo: "KUNJUNGI SITUS",
     source: "KODE SUMBER",
+    unavailable: "TAUTAN BELUM ADA",
   },
 } as const;
 
@@ -387,30 +377,26 @@ export const contact = {
   badge: "Mari Memulai Sesuatu yang Hebat",
   title: "Mari Kolaborasi Bersama.",
   description:
-    "Memiliki ide produk baru, kebutuhan transformasi sistem yang membutuhkan penanganan teliti, atau ingin sekadar berdiskusi teknis seputar arsitektur modern? Pintu diskusi saya selalu terbuka.",
+    "Punya kebutuhan sistem baru, ingin merapikan aplikasi yang sudah berjalan, atau sekadar berdiskusi teknis seputar arsitektur web? Silakan hubungi saya melalui salah satu kanal di bawah.",
   email: {
     label: "Surel Utama",
-    address: "hello@alexpratama.dev",
-    href: "mailto:hello@alexpratama.dev",
+    address: "putramukti26@gmail.com",
+    href: "mailto:putramukti26@gmail.com",
+  },
+  location: {
+    label: "Domisili",
+    value: "Semarang, Jawa Tengah",
   },
   socials: [
     {
-      label: "LinkedIn",
-      icon: icons.linkedin,
-      href: "#tautan-linkedin-belum-tersedia",
-      placeholder: true,
-    },
-    {
       label: "GitHub",
       icon: icons.windowCode,
-      href: "#tautan-github-belum-tersedia",
-      placeholder: true,
+      href: "https://github.com/putramkti",
     },
     {
-      label: "Twitter / X",
-      icon: icons.xTwitter,
-      href: "#tautan-twitter-belum-tersedia",
-      placeholder: true,
+      label: "LinkedIn",
+      icon: icons.linkedin,
+      href: "https://linkedin.com/in/putramukti",
     },
   ] satisfies readonly SocialLink[],
   form: {
@@ -439,14 +425,13 @@ export const contact = {
  * ------------------------------------------------------------------ */
 
 export const footer = {
-  name: "Alex Pratama",
-  tagline: "Dibuat dengan dedikasi dan passion untuk kesempurnaan web.",
-  copyright: "© 2024 Creative Technologist. All rights reserved.",
+  name: "Putra Jadi Mukti",
+  tagline: "Software Engineer — membangun sistem web end-to-end.",
+  copyright: "© 2026 Putra Jadi Mukti.",
   links: [
     { label: "About", href: "#tentang" },
     { label: "Skills", href: "#keahlian" },
     { label: "Projects", href: "#proyek", active: true },
     { label: "Contact", href: "#kontak" },
-    { label: "Privacy Policy", href: "#kebijakan-privasi" },
   ] satisfies readonly NavItem[],
 } as const;

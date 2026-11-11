@@ -47,24 +47,39 @@ export function ContactSection() {
                   <span className="font-mono text-[11px]/[14px] font-medium tracking-[0.08em] text-ink-muted">
                     {contact.email.label}
                   </span>
-                  <span className="font-body text-[15px]/6 font-medium text-ink">
+                  <span className="font-body text-[15px]/6 font-medium break-all text-ink">
                     {contact.email.address}
                   </span>
                 </span>
               </a>
+
+              <div className="flex items-center gap-3 rounded-card border border-line bg-surface p-[13px]">
+                <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-btn bg-surface-hover">
+                  <Icon icon={icons.person} alt="" />
+                </span>
+                <span className="flex flex-col">
+                  <span className="font-mono text-[11px]/[14px] font-medium tracking-[0.08em] text-ink-muted">
+                    {contact.location.label}
+                  </span>
+                  <span className="font-body text-[15px]/6 font-medium text-ink">
+                    {contact.location.value}
+                  </span>
+                </span>
+              </div>
 
               <ul className="flex flex-wrap items-center gap-3 pt-2">
                 {contact.socials.map((social) => (
                   <li key={social.label}>
                     <a
                       href={social.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={`${social.label} — buka di tab baru`}
                       className="inline-flex items-center gap-2 rounded-btn border border-edge-soft bg-glass px-[17px] py-[9px] font-mono text-[11px]/[14px] font-medium tracking-[0.08em] text-ink backdrop-blur-md transition-colors hover:border-line-strong"
                     >
                       <Icon icon={social.icon} alt="" />
                       {social.label}
-                      {social.placeholder ? (
-                        <span className="sr-only"> (tautan belum tersedia)</span>
-                      ) : null}
+                      <Icon icon={icons.externalLink} alt="" />
                     </a>
                   </li>
                 ))}

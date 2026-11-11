@@ -26,9 +26,26 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Pratama — Full Stack Developer & UI/UX Designer",
+  title: "Putra Jadi Mukti - Software Engineer",
   description:
-    "Portofolio Alex Pratama, Full Stack Developer & UI/UX Designer berbasis di Jakarta. Arsitektur web berperforma tinggi, antarmuka interaktif, dan backend yang skalabel.",
+    "Portofolio Putra Jadi Mukti, Software Engineer berbasis di Semarang. Membangun sistem web end-to-end dengan TypeScript, Next.js, React, .NET, dan Laravel.",
+  authors: [{ name: "Putra Jadi Mukti" }],
+  keywords: [
+    "Putra Jadi Mukti",
+    "Software Engineer",
+    "Full Stack Developer",
+    "TypeScript",
+    "Next.js",
+    "React",
+    ".NET",
+    "Laravel",
+  ],
+  openGraph: {
+    title: "Putra Jadi Mukti - Software Engineer",
+    description:
+      "Portofolio Putra Jadi Mukti, Software Engineer yang membangun sistem web end-to-end.",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {

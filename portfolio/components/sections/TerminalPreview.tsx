@@ -23,7 +23,7 @@ export function TerminalPreview() {
         </div>
 
         <p className="truncate font-mono text-[13px]/[22px] text-ink-muted">
-          alex-pratama.config.ts
+          putra-jadi-mukti.config.ts
         </p>
 
         <Icon icon={icons.copy} alt="" />
@@ -45,7 +45,7 @@ export function TerminalPreview() {
             {"\n"}
             <span className={kw}>export const</span>
             <span className={plain}> </span>
-            <span className={ident}>alex</span>
+            <span className={ident}>putra</span>
             <span className={plain}>{" = "}</span>
             <span className={kw}>new</span>
             <span className={plain}> </span>
@@ -54,41 +54,35 @@ export function TerminalPreview() {
             {"\n"}
             <span className={plain}>
               {"  name: "}
-              <span className={type}>{"'Alex Pratama'"}</span>
+              <span className={type}>{"'Putra Jadi Mukti'"}</span>
               {","}
             </span>
             {"\n"}
             <span className={plain}>
               {"  role: "}
-              <span className={type}>{"'Full Stack Engineer & UI Designer'"}</span>
+              <span className={type}>{"'Software Engineer'"}</span>
               {","}
             </span>
             {"\n"}
             <span className={plain}>
               {"  location: "}
-              <span className={type}>{"'Jakarta, Indonesia (WIB)'"}</span>
+              <span className={type}>{"'Semarang, Indonesia (WIB)'"}</span>
               {","}
             </span>
             {"\n"}
-            <span className={plain}>{"  focus: ["}</span>
+            <span className={plain}>{"  stack: ["}</span>
             {"\n"}
             <span className={plain}>
-              {"    'Scalable Web Architectures'"}
-              <span className={str}>{","}</span>
+              {"    'TypeScript', 'Next.js', 'React',"}
+              {"\n"}
+              {"    '.NET', 'Laravel'"}
             </span>
-            {"\n"}
-            <span className={plain}>
-              {"    'Pixel-Perfect UI & Micro-interactions'"}
-              <span className={str}>{","}</span>
-            </span>
-            {"\n"}
-            <span className={plain}>{"    'High-Throughput APIs & Data Pipeline'"}</span>
             {"\n"}
             <span className={plain}>{"  ],"}</span>
             {"\n"}
             <span className={plain}>
-              {"  status: "}
-              <span className={type}>{"'Ready for ambitious challenges'"}</span>
+              {"  education: "}
+              <span className={type}>{"'S1 Informatika, UPN Veteran Yogyakarta'"}</span>
               {","}
             </span>
             {"\n"}
@@ -98,7 +92,7 @@ export function TerminalPreview() {
               {"    "}
               <span className={kw}>window</span>
               {".open("}
-              <span className={str}>{"'mailto:hello@alexpratama.dev'"}</span>
+              <span className={str}>{"'mailto:putramukti26@gmail.com'"}</span>
               {")"}
             </span>
             {"\n"}
@@ -109,7 +103,7 @@ export function TerminalPreview() {
         <div className="mt-[13px] flex items-center gap-2 border-t border-line-soft pt-[13px]">
           <Icon icon={icons.terminalPrompt} alt="" />
           <p className="font-mono text-xs/[16px] whitespace-nowrap text-teal">
-            {`$ git commit -m "feat: ship digital excellence"`}
+            {`$ dotnet test --logger "console;verbosity=minimal"`}
           </p>
         </div>
       </div>

@@ -43,15 +43,46 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
 
-      <div className="flex items-center gap-4 px-6 pb-6 sm:px-8 sm:pb-8">
-        <span className="inline-flex items-center gap-1.5 rounded-btn bg-indigo px-4 py-2 font-mono text-[11px]/[14px] font-semibold tracking-[0.08em] text-cta-ink">
-          {projects.actions.demo}
-          <Icon icon={icons.externalLink} alt="" />
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-btn border border-edge-soft bg-glass px-[17px] py-[9px] font-mono text-[11px]/[14px] font-medium tracking-[0.08em] text-ink backdrop-blur-md">
-          {projects.actions.source}
-          <Icon icon={icons.codeBrackets} alt="" />
-        </span>
+      <div className="flex flex-wrap items-center gap-4 px-6 pb-6 sm:px-8 sm:pb-8">
+        {project.demoHref ? (
+          <a
+            href={project.demoHref}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-1.5 rounded-btn bg-indigo px-4 py-2 font-mono text-[11px]/[14px] font-semibold tracking-[0.08em] text-cta-ink transition-opacity hover:opacity-90"
+          >
+            {projects.actions.demo}
+            <Icon icon={icons.externalLink} alt="" />
+          </a>
+        ) : (
+          <span
+            aria-disabled="true"
+            className="inline-flex items-center gap-1.5 rounded-btn border border-edge-soft bg-glass px-4 py-2 font-mono text-[11px]/[14px] font-semibold tracking-[0.08em] text-ink-muted backdrop-blur-md"
+          >
+            {projects.actions.unavailable}
+            <Icon icon={icons.externalLink} alt="" />
+          </span>
+        )}
+
+        {project.sourceHref ? (
+          <a
+            href={project.sourceHref}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="inline-flex items-center gap-1.5 rounded-btn border border-edge-soft bg-glass px-[17px] py-[9px] font-mono text-[11px]/[14px] font-medium tracking-[0.08em] text-ink backdrop-blur-md transition-colors hover:border-line-strong"
+          >
+            {projects.actions.source}
+            <Icon icon={icons.codeBrackets} alt="" />
+          </a>
+        ) : (
+          <span
+            aria-disabled="true"
+            className="inline-flex items-center gap-1.5 rounded-btn border border-edge-soft bg-glass px-[17px] py-[9px] font-mono text-[11px]/[14px] font-medium tracking-[0.08em] text-ink-muted backdrop-blur-md"
+          >
+            {projects.actions.unavailable}
+            <Icon icon={icons.codeBrackets} alt="" />
+          </span>
+        )}
       </div>
     </article>
   );

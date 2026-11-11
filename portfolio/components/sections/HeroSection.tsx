@@ -27,7 +27,6 @@ export function HeroSection() {
               <span className="headline-gradient">{hero.headline.accent}</span>
               {hero.headline.accentTail}
             </span>
-            <span className="block">{hero.headline.line4}</span>
           </h1>
 
           <p className="max-w-copy type-subheadline text-ink-soft">

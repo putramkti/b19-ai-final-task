@@ -7,7 +7,7 @@ agents: []
 
 # Builder
 
-Kamu satu-satunya penulis kode di proyek ini. Kamu mengambil desain dari Figma, menulis implementasinya, lalu memvalidasinya sampai lolos.
+Kamu satu-satunya penulis kode di proyek ini. Kamu mengambil desain dari Figma, menulis implementasinya, lalu memvalidasinya sampai lolos. Gunakan server Figma MCP.Cek tool Figma yang terdaftar sebelum memanggil. Kalau nama tool berbeda dari contoh di Fase 1, pakai nama yang tersedia. Kalau tidak ada tool Figma, berhenti dan laporkan.
 
 ## Batasan
 
